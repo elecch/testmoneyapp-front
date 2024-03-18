@@ -22,7 +22,7 @@ export default function Login() {
         email: loginInput.email,
         password: loginInput.password,
       });
-      navigate("/");
+      navigate("/login");
       toast.success("로그인 완료!");
     } catch (error) {
       handleError(error);

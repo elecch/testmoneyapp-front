@@ -23,7 +23,7 @@ export default function Signup() {
         password: signupInput.password,
         username: signupInput.username,
       });
-      navigate("/login");
+      navigate("/");
       toast.success("가입 완료!");
     } catch (error) {
       handleError(error);

@@ -15,7 +15,7 @@ export default function Header() {
     if (isConfirmed) {
       try {
         await axios.post("http://localhost:4000/user/logout");
-        navigate("/login");
+        navigate("/");
         toast.success("로그아웃 완료!");
       } catch (error) {
         handleError(error);
@@ -28,11 +28,11 @@ export default function Header() {
         onClick={() => navigate(0)}
         className="font-bold text-xl cursor-pointer select-none"
       >
-        가장 보기 편한 가계부 앱. 땡그랑
+        예산관리 앱은? 땡그랑
       </h2>
       <ul className="flex gap-1">
         <li>
-          <button onClick={() => navigate("/login")} className="primary-btn">
+          <button onClick={() => navigate("/")} className="primary-btn">
             로그인
           </button>
         </li>
