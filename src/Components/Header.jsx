@@ -4,7 +4,7 @@ import { handleError } from "../utils/handleError";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-export default function Header() {
+export default function Header({ isLoggedIn }) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -26,26 +26,37 @@ export default function Header() {
     <nav className="h-[60px] flex w-full bg-slate-900 text-white p-3 justify-between items-center">
       <h2
         onClick={() => navigate(0)}
-        className="font-bold text-xl cursor-pointer select-none"
+        className="font-bold text-xl text-white cursor-pointer select-none"
       >
         예산관리 앱은? 땡그랑
       </h2>
+
       <ul className="flex gap-1">
-        <li>
-          <button onClick={() => navigate("/")} className="primary-btn">
-            로그인
-          </button>
-        </li>
-        <li>
-          <button onClick={() => navigate("/signup")} className="primary-btn">
-            회원가입
-          </button>
-        </li>
-        <li>
-          <button onClick={handleLogout} className="danger-btn">
-            로그아웃
-          </button>
-        </li>
+        {isLoggedIn ? (
+          <>
+            <li>
+              <button onClick={handleLogout} className="danger-btn">
+                로그아웃
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <button onClick={() => navigate("/")} className="primary-btn">
+                로그인
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => navigate("/signup")}
+                className="primary-btn"
+              >
+                회원가입
+              </button>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

@@ -22,7 +22,7 @@ function App() {
         pauseOnHover
         theme="dark"
       />
-      <Header />
+      
       <Routes>
         <Route path="/" element={<Login />} />
         <Route

@@ -11,6 +11,7 @@ import styled from "styled-components";
 import bg from "../img/bg.png";
 import { MainLayout } from "../styles/Layouts";
 import Chart from "../Components/Chart/Chart";
+import Header from "./Header";
 
 axios.defaults.withCredentials = true;
 
@@ -62,6 +63,7 @@ export default function Home() {
     <div>
       {isLoggedIn ? (
         <>
+          <Header isLoggedIn={isLoggedIn} />
           <AppStyled bg={bg} className="App">
             {orbMemo}
             <MainLayout>
@@ -69,6 +71,7 @@ export default function Home() {
                 username={userData.username}
                 active={active}
                 setActive={setActive}
+                picture={userData.picture}
               />
               <main>{displayData()}</main>
             </MainLayout>
