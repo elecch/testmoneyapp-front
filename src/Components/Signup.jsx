@@ -20,7 +20,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/user/signup", {
+      await axios.post("https://api.ge-rang.com/user/signup", {
         email: signupInput.email,
         password: signupInput.password,
         username: signupInput.username,

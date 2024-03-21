@@ -19,13 +19,13 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/user/login", {
+      await axios.post("https://api.ge-rang.com/user/login", {
         email: loginInput.email,
         password: loginInput.password,
       });
       navigate("/login");
       toast.success("로그인 완료!");
-    } catch (error) {
+    } catch (error) { 
       handleError(error);
     }
   };
