@@ -11,7 +11,7 @@ export const GlobalProvider = ({ children }) => {
   //수입 계산
   const addIncome = async (income) => {
     const response = await axios
-      .post("https://api.ge-rang.com/user/add-income", income)
+      .post("http://localhost:3000/user/add-income", income)
       .catch((err) => {
         setError(err.response.data.message);
       });
@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
 
   const getIncomes = async () => {
     const response = await axios.get(
-      "https://api.ge-rang.com/user/get-incomes"
+      "http://localhost:3000/user/get-incomes"
     );
     setIncomes(response.data);
     console.log(response.data);
@@ -28,7 +28,7 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteIncome = async (id) => {
     const res = await axios.delete(
-      `https://api.ge-rang.com/user/delete-income/${id}`
+      `http://localhost:3000/user/delete-income/${id}`
     );
     getIncomes();
   };
@@ -45,7 +45,7 @@ export const GlobalProvider = ({ children }) => {
   //수입 계산
   const addExpense = async (income) => {
     const response = await axios
-      .post("https://api.ge-rang.com/user/add-expense", income)
+      .post("http://localhost:3000/user/add-expense", income)
       .catch((err) => {
         setError(err.response.data.message);
       });
@@ -54,7 +54,7 @@ export const GlobalProvider = ({ children }) => {
 
   const getExpenses = async () => {
     const response = await axios.get(
-      "https://api.ge-rang.com/user/get-expenses"
+      "http://localhost:3000/user/get-expenses"
     );
     setExpenses(response.data);
     console.log(response.data);
@@ -62,7 +62,7 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteExpense = async (id) => {
     const res = await axios.delete(
-      `https://api.ge-rang.com/user/delete-expense/${id}`
+      `http://localhost:3000/user/delete-expense/${id}`
     );
     getExpenses();
   };

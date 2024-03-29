@@ -14,7 +14,7 @@ export default function Header({ isLoggedIn }) {
     // 사용자가 '확인'을 클릭한 경우, 로그아웃 과정을 진행
     if (isConfirmed) {
       try {
-        await axios.post("http://localhost:4000/user/logout");
+        await axios.post("http://localhost:3000/user/logout");
         navigate("/");
         toast.success("로그아웃 완료!");
       } catch (error) {

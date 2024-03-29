@@ -45,7 +45,7 @@ export default function Home() {
   const getUserDetails = async () => {
     try {
       const response = await axios.get(
-        "https://api.ge-rang.com/user/my-details"
+        "http://localhost:3000/user/my-details"
       );
       setIsLoggedIn(true);
       setUserData(response.data.user);
