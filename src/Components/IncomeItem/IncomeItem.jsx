@@ -7,6 +7,7 @@ import {
   calender,
   card,
   circle,
+  camera,
   clothing,
   comment,
   won,
@@ -32,6 +33,7 @@ function IncomeItem({
   category,
   description,
   deleteItem,
+  createItem,
   indicatorColor,
   type,
 }) {
@@ -108,11 +110,27 @@ function IncomeItem({
               icon={trash}
               bPad={"1rem"}
               bRad={"50%"}
-              bg={"var(--primary-color"}
+              bg={"var(--primary-color)"}
               color={"#fff"}
               iColor={"#fff"}
               hColor={"var(--color-green)"}
               onClick={() => deleteItem(id)}
+            />
+            <Button
+              icon={camera} // 아이콘을 'camera'로 변경
+              bPad={"0.7rem"} // 패딩을 조정하여 버튼 크기 변경
+              bRad={"50%"}
+              bg={"var(--secondary-color)"}
+              color={"red"}
+              iColor={"#fff"}
+              hColor={"var(--color-red)"}
+              onClick={() => createItem(id)} // 함수를 이미지 생성 함수로 변경
+              style={{
+                position: "absolute",
+                top: "0.5rem",
+                right: "0.3rem",
+                zIndex: 1,
+              }}
             />
           </div>
         </div>
@@ -185,6 +203,12 @@ const IncomeItemStyled = styled.div`
           opacity: 0.8;
         }
       }
+    }
+    .btn-con {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
   }
 `;
