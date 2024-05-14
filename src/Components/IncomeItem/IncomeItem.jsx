@@ -24,6 +24,7 @@ import {
   yt,
 } from "../../utils/Icons";
 import Button from "../Button/Button";
+import { useGlobalContext } from "../../context/globalContext";
 
 function IncomeItem({
   id,
@@ -33,10 +34,15 @@ function IncomeItem({
   category,
   description,
   deleteItem,
-  createItem,
   indicatorColor,
   type,
 }) {
+  const { createImage, results } = useGlobalContext();
+
+  const searchImages = async () => {
+    await createImage(title);
+  };
+
   const categoryIcon = () => {
     switch (category) {
       case "salary":
@@ -83,8 +89,6 @@ function IncomeItem({
     }
   };
 
-  console.log("type", type);
-
   return (
     <IncomeItemStyled indicator={indicatorColor}>
       <div className="icon">
@@ -117,14 +121,14 @@ function IncomeItem({
               onClick={() => deleteItem(id)}
             />
             <Button
-              icon={camera} // 아이콘을 'camera'로 변경
-              bPad={"0.7rem"} // 패딩을 조정하여 버튼 크기 변경
+              icon={camera}
+              bPad={"0.7rem"}
               bRad={"50%"}
               bg={"var(--secondary-color)"}
               color={"red"}
               iColor={"#fff"}
               hColor={"var(--color-red)"}
-              onClick={() => createItem(id)} // 함수를 이미지 생성 함수로 변경
+              onClick={searchImages}
               style={{
                 position: "absolute",
                 top: "0.5rem",

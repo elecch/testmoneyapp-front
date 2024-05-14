@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { signout } from "../../utils/Icons";
 import { menuItems } from "../../utils/menuItems";
+import { useGlobalContext } from "../../context/globalContext";
+import Results from "./Results";
 
 function Navigation({ username, active, setActive, picture }) {
+  const { results } = useGlobalContext();
+
   return (
     <NavStyled>
       <div className="user-con">
@@ -13,19 +17,18 @@ function Navigation({ username, active, setActive, picture }) {
         </div>
       </div>
       <ul className="menu-items">
-        {menuItems.map((item) => {
-          return (
-            <li
-              key={item.id}
-              onClick={() => setActive(item.id)}
-              className={active === item.id ? "active" : ""}
-            >
-              {item.icon}
-              <span>{item.title}</span>
-            </li>
-          );
-        })}
+        {menuItems.map((item) => (
+          <li
+            key={item.id}
+            onClick={() => setActive(item.id)}
+            className={active === item.id ? "active" : ""}
+          >
+            {item.icon}
+            <span>{item.title}</span>
+          </li>
+        ))}
       </ul>
+      <Results results={results} />
     </NavStyled>
   );
 }
@@ -35,7 +38,6 @@ const NavStyled = styled.nav`
   width: 374px;
   height: 100%;
   background: rgba(230, 240, 255, 0.6);
-
   border: 3px solid #ffffff;
   backdrop-filter: blur(4.5px);
   border-radius: 32px;
@@ -43,6 +45,7 @@ const NavStyled = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+
   .user-con {
     height: 100px;
     display: flex;

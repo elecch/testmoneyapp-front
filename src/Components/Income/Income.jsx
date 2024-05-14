@@ -18,6 +18,7 @@ function Income() {
   useEffect(() => {
     getIncomes();
   }, []);
+
   return (
     <IncomeStyled>
       <InnerLayout>
