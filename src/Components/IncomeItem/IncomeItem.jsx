@@ -22,6 +22,8 @@ import {
   tv,
   users,
   yt,
+  fixed_income,
+  fixed_expense,
 } from "../../utils/Icons";
 import Button from "../Button/Button";
 import { useGlobalContext } from "../../context/globalContext";
@@ -59,6 +61,8 @@ function IncomeItem({
         return card;
       case "youtube":
         return yt;
+      case "fixed_income": // 고정 수입 카테고리 추가
+        return fixed_income; // 새 아이콘 할당
       case "other":
         return piggy;
       default:
@@ -82,6 +86,8 @@ function IncomeItem({
         return clothing;
       case "travelling":
         return freelance;
+      case "fixed_expense":
+        return fixed_expense;
       case "other":
         return circle;
       default:

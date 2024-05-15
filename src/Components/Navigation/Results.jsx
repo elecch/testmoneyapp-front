@@ -21,6 +21,8 @@ const ResultsStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
 
   img {
     border-radius: 10px;

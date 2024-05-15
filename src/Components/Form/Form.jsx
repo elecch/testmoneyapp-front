@@ -20,35 +20,40 @@ function Form() {
   const { title, amount, date, category, description } = inputState;
 
   const handleInput = (name) => (e) => {
-    setInputState({ ...inputState, [name]: e.target.value });
+    let value = e.target.value;
+
+    // 금액 입력 필드에 콤마 추가
+    if (name === "amount") {
+      value = value.replace(/,/g, "");
+      if (!isNaN(value) && value !== "") {
+        value = parseFloat(value).toLocaleString();
+      }
+    }
+
+    setInputState({ ...inputState, [name]: value });
     setError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Date 객체를 올바른 형식으로 변환
+    // 콤마 제거 후 숫자로 변환
+    const numericAmount = parseFloat(amount.replace(/,/g, ""));
     const formattedDate = date ? dateFormat(date) : "";
 
-    // amount 값을 숫자로 변환
-    const numericAmount = parseFloat(amount);
-
-    // 변환된 amount 값을 payload에 포함
     const payload = {
       ...inputState,
       amount: numericAmount,
       date: formattedDate,
     };
 
-    // amount가 숫자가 아니거나 양수가 아닌 경우 에러 처리
     if (isNaN(numericAmount) || numericAmount <= 0) {
       setError("금액은 양수이며 숫자여야 합니다!");
-      return; // 함수 실행 중단
+      return;
     }
 
-    addIncome(payload); // 수정된 payload를 사용하여 서버에 전송
+    addIncome(payload);
 
-    // 폼 제출 후 입력 상태 초기화
     setInputState({
       title: "",
       amount: "",
@@ -105,9 +110,10 @@ function Form() {
           <option value="freelancing">외주 수입</option>
           <option value="investments">금융 투자</option>
           <option value="stocks">주식</option>
-          <option value="bitcoin"> 비트 코인</option>
+          <option value="bitcoin">비트 코인</option>
           <option value="bank">계좌 송금</option>
-          <option value="youtube">유튜브</option>
+          <option value="youtube">구독</option>
+          <option value="fixed_income">고정 수입</option>
           <option value="other">기타</option>
         </select>
       </div>
@@ -128,7 +134,7 @@ function Form() {
           icon={plus}
           bPad={".8rem 1.6rem"}
           bRad={"30px"}
-          bg={"var(--color-accent"}
+          bg={"var(--color-accent)"}
           color={"#fff"}
         />
       </div>
@@ -185,4 +191,5 @@ const FormStyled = styled.form`
     }
   }
 `;
+
 export default Form;

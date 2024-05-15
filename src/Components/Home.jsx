@@ -19,6 +19,7 @@ export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
   const [active, setActive] = useState(1);
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
   const global = useGlobalContext();
   console.log(global);
@@ -44,9 +45,7 @@ export default function Home() {
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/user/my-details"
-      );
+      const response = await axios.get("http://localhost:3000/user/my-details");
       setIsLoggedIn(true);
       setUserData(response.data.user);
     } catch (error) {
@@ -54,12 +53,18 @@ export default function Home() {
         setIsLoggedIn(false);
       }
       handleError(error);
+    } finally {
+      setIsLoading(false); // 로딩 완료
     }
   };
 
   useEffect(() => {
     getUserDetails();
   }, []);
+
+  if (isLoading) {
+    return <div>로딩 중...</div>; // 로딩 중일 때 표시할 화면
+  }
 
   return (
     <div>

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { signout } from "../../utils/Icons";
 import { menuItems } from "../../utils/menuItems";
 import { useGlobalContext } from "../../context/globalContext";
 import Results from "./Results";
