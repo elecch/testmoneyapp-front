@@ -58,35 +58,39 @@ function Dashboard() {
               </div>
               <div className="balance">
                 <h2>총 잔액</h2>
-                <p>
+                <p className={totalBalance() >= 0 ? "positive" : "negative"}>
                   {won} {totalBalance().toLocaleString()}
                 </p>
               </div>
             </div>
             <div className="fixed-con">
-              <div className="fixed-income">
-                <h2>
-                  고정 수입 : {won} {totalFixedIncome.toLocaleString()}원
-                </h2>
-                {fixedIncomes.map((item) => (
-                  <div key={item.id} className="fixed-item">
-                    <p>
-                      {item.title}: {won} {item.amount.toLocaleString()}
-                    </p>
-                  </div>
-                ))}
+              <div className="fixed-box">
+                <div className="fixed-income">
+                  <h2>
+                    월 고정수입 : {won} {totalFixedIncome.toLocaleString()}원
+                  </h2>
+                  {fixedIncomes.map((item) => (
+                    <div key={item.id} className="fixed-item">
+                      <p>
+                        {item.title}: {won} {item.amount.toLocaleString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="fixed-expense">
-                <h2>
-                  고정 지출 : {won} {totalFixedExpense.toLocaleString()}원
-                </h2>
-                {fixedExpenses.map((item) => (
-                  <div key={item.id} className="fixed-item">
-                    <p>
-                      {item.title}: {won} {item.amount.toLocaleString()}
-                    </p>
-                  </div>
-                ))}
+              <div className="fixed-box">
+                <div className="fixed-expense">
+                  <h2>
+                    월 고정지출 : {won} {totalFixedExpense.toLocaleString()}원
+                  </h2>
+                  {fixedExpenses.map((item) => (
+                    <div key={item.id} className="fixed-item">
+                      <p>
+                        {item.title}: {won} {item.amount.toLocaleString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -144,7 +148,7 @@ const DashboardStyled = styled.div`
     gap: 2rem;
     .chart-con {
       grid-column: 1 / 4;
-      height: 400px;
+      height: auto;
       .amount-con {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -163,7 +167,7 @@ const DashboardStyled = styled.div`
           border-radius: 20px;
           padding: 1rem;
           p {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             font-family: "Montserrat", sans-serif;
           }
@@ -176,10 +180,15 @@ const DashboardStyled = styled.div`
           justify-content: center;
           align-items: center;
           p {
-            color: var(--color-green);
             opacity: 0.6;
-            font-size: 3rem;
+            font-size: 1.8rem;
             font-family: "Montserrat", sans-serif;
+            &.positive {
+              color: var(--color-green) !important;
+            }
+            &.negative {
+              color: var(--color-red) !important;
+            }
           }
         }
       }
@@ -188,30 +197,34 @@ const DashboardStyled = styled.div`
         display: flex;
         gap: 2rem;
         margin-top: 2rem;
+        align-items: flex-start;
 
-        .fixed-income,
-        .fixed-expense {
-          background: #fcf6f9;
-          border: 2px solid #ffffff;
-          box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-          border-radius: 20px;
-          padding: 1rem;
-          width: 300px;
+        .fixed-box {
+          flex: 1;
+          .fixed-income,
+          .fixed-expense {
+            background: #fcf6f9;
+            border: 2px solid #ffffff;
+            box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+            border-radius: 20px;
+            padding: 1rem;
+            width: 100%;
 
-          h2 {
-            text-align: center;
-            margin-bottom: 1rem;
-            font-family: "Montserrat", sans-serif;
-          }
-
-          .fixed-item {
-            background: #f0f0f0;
-            border-radius: 10px;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            p {
-              font-size: 1.2rem;
+            h2 {
+              text-align: center;
+              margin-bottom: 1rem;
               font-family: "Montserrat", sans-serif;
+            }
+
+            .fixed-item {
+              background: #f0f0f0;
+              border-radius: 10px;
+              padding: 0.5rem;
+              margin-bottom: 0.5rem;
+              p {
+                font-size: 1.2rem;
+                font-family: "Montserrat", sans-serif;
+              }
             }
           }
         }

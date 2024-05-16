@@ -113,7 +113,7 @@ function ExpenseForm() {
           <option value="takeaways">배달음식</option>
           <option value="clothing">품위유지비</option>
           <option value="travelling">여행비</option>
-          <option value="fixed_expense">고정 지출</option>
+          <option value="fixed_expense">월 고정지출</option>
           <option value="other">기타</option>
         </select>
       </div>

@@ -113,7 +113,7 @@ function Form() {
           <option value="bitcoin">비트 코인</option>
           <option value="bank">계좌 송금</option>
           <option value="youtube">구독</option>
-          <option value="fixed_income">고정 수입</option>
+          <option value="fixed_income">월 고정수입</option>
           <option value="other">기타</option>
         </select>
       </div>

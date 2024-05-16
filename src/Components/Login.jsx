@@ -25,7 +25,7 @@ export default function Login() {
       });
       navigate("/login");
       toast.success("로그인 완료!");
-    } catch (error) { 
+    } catch (error) {
       handleError(error);
     }
   };
@@ -42,7 +42,7 @@ export default function Login() {
     <>
       <Header />
       <div className="__login w-full h-[calc(100dvh-60px)] bg-slate-800 text-white flex justify-center items-center flex-col gap-3">
-        <h1 className="text-3xl">로그인 페이지</h1>
+        <h1 className="text-3xl text-white">로그인 페이지</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input

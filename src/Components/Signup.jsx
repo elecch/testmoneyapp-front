@@ -45,7 +45,7 @@ export default function Signup() {
     <>
       <Header />
       <div className="__signup w-full h-[calc(100dvh-60px)] bg-slate-800 text-white flex justify-center items-center flex-col gap-3">
-        <h1 className="text-3xl">회원가입 페이지</h1>
+        <h1 className="text-3xl text-white">회원가입 페이지</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input
