@@ -159,7 +159,7 @@ function Chart() {
               tickRotation: 0,
               legendOffset: -40,
               legendPosition: "middle",
-              format: (value) => `${value.toLocaleString()}`, // Add comma separators
+              format: (value) => `${value.toLocaleString()}`,
             }}
             colors={{ scheme: "nivo" }}
             pointSize={10}
@@ -229,7 +229,7 @@ function Chart() {
               tickRotation: 0,
               legendOffset: -40,
               legendPosition: "middle",
-              format: (value) => `${value.toLocaleString()}`, // Add comma separators
+              format: (value) => `${value.toLocaleString()}`,
             }}
             colors={{ scheme: "nivo" }}
             pointSize={10}

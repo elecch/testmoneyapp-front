@@ -8,10 +8,8 @@ export default function Header({ isLoggedIn }) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    // 로그아웃 확인하는 메시지
     const isConfirmed = window.confirm("정말 로그아웃 하시겠습니까?");
 
-    // 사용자가 '확인'을 클릭한 경우, 로그아웃 과정을 진행
     if (isConfirmed) {
       try {
         await axios.post("http://localhost:3000/user/logout");

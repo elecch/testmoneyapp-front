@@ -49,7 +49,7 @@ const CategoryPieChart = ({ data, type }) => {
         radialLabelsLinkHorizontalLength={24}
         radialLabelsLinkStrokeWidth={2}
         radialLabelsLinkOffset={4}
-        sliceLabel={(d) => d.value.toLocaleString()} // Add comma separators
+        sliceLabel={(d) => d.value.toLocaleString()}
         sliceLabelsSkipAngle={10}
         sliceLabelsTextColor="#333333"
         legends={[

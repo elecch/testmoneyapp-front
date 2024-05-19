@@ -33,7 +33,6 @@ export default function Signup() {
     }
   };
 
-  //handle on change event function
   const handleOnChange = (e) => {
     setSignupInput((prevVal) => ({
       ...prevVal,

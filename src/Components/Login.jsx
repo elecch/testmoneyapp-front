@@ -30,7 +30,6 @@ export default function Login() {
     }
   };
 
-  //handle on change event function
   const handleOnChange = (e) => {
     setLoginInput((prevVal) => ({
       ...prevVal,

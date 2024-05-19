@@ -41,7 +41,7 @@ export const GlobalProvider = ({ children }) => {
     return totalIncome;
   };
 
-  //수입 계산
+  //지출 계산
   const addExpense = async (income) => {
     const response = await axios
       .post("http://localhost:3000/user/add-expense", income)
@@ -85,6 +85,8 @@ export const GlobalProvider = ({ children }) => {
 
     return history.slice(0, 4);
   };
+
+  //이미지 기능
   const createImage = async (query) => {
     const url = `http://localhost:3000/search?query=${encodeURIComponent(
       query

@@ -19,7 +19,7 @@ export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
   const [active, setActive] = useState(1);
-  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(true);
 
   const global = useGlobalContext();
   console.log(global);
@@ -54,7 +54,7 @@ export default function Home() {
       }
       handleError(error);
     } finally {
-      setIsLoading(false); // 로딩 완료
+      setIsLoading(false);
     }
   };
 
@@ -63,7 +63,7 @@ export default function Home() {
   }, []);
 
   if (isLoading) {
-    return <div>로딩 중...</div>; // 로딩 중일 때 표시할 화면
+    return <div>로딩 중...</div>;
   }
 
   return (
