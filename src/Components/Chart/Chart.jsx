@@ -9,7 +9,8 @@ function Chart() {
   const { incomes, expenses } = useGlobalContext();
   const [oneMonthLineData, setOneMonthLineData] = useState([]);
   const [sixMonthsLineData, setSixMonthsLineData] = useState([]);
-  const [pieData, setPieData] = useState([]);
+  const [incomePieData, setIncomePieData] = useState([]);
+  const [expensePieData, setExpensePieData] = useState([]);
 
   const calculateSumsByDate = (data) => {
     const sums = {};
@@ -120,7 +121,8 @@ function Chart() {
 
     const incomeCategoryData = calculateCategorySums(sixMonthsIncomes);
     const expenseCategoryData = calculateCategorySums(sixMonthsExpenses);
-    setPieData(incomeCategoryData.concat(expenseCategoryData));
+    setIncomePieData(incomeCategoryData);
+    setExpensePieData(expenseCategoryData);
   }, [incomes, expenses]);
 
   return (
@@ -157,6 +159,7 @@ function Chart() {
               tickRotation: 0,
               legendOffset: -40,
               legendPosition: "middle",
+              format: (value) => `${value.toLocaleString()}`, // Add comma separators
             }}
             colors={{ scheme: "nivo" }}
             pointSize={10}
@@ -226,6 +229,7 @@ function Chart() {
               tickRotation: 0,
               legendOffset: -40,
               legendPosition: "middle",
+              format: (value) => `${value.toLocaleString()}`, // Add comma separators
             }}
             colors={{ scheme: "nivo" }}
             pointSize={10}
@@ -266,7 +270,10 @@ function Chart() {
       <ChartContainer>
         <h2>최근 6개월 파이 차트</h2>
         <PieChartStyled>
-          <CategoryPieChart data={pieData} />
+          <CategoryPieChart data={incomePieData} type="income" />
+        </PieChartStyled>
+        <PieChartStyled>
+          <CategoryPieChart data={expensePieData} type="expense" />
         </PieChartStyled>
       </ChartContainer>
     </>

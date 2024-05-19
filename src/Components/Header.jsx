@@ -28,7 +28,7 @@ export default function Header({ isLoggedIn }) {
         onClick={() => navigate(0)}
         className="font-bold text-xl text-white cursor-pointer select-none"
       >
-        예산관리 앱은? 땡그랑
+        기억을 위한 가계부 앱은? 땡그랑
       </h2>
 
       <ul className="flex gap-1">
